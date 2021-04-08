@@ -1,11 +1,15 @@
 import feedparser
 import re
+from colorama import init, Fore, Back, Style
+
+init()
 
 subreddit = ''
 
 data = feedparser.parse('http://www.reddit.com/r/'+subreddit+'.rss')
 
-print(data['feed']['title'])
+print(Fore.YELLOW+ Back.RED+data['feed']['title'])
+print(Style.RESET_ALL)
 print(data['feed']['link'])
 print(data.feed.subtitle)
 print()
@@ -30,6 +34,8 @@ for i in range(0, total_entries):
             comment = str(comment).replace('\']',' ')
             comment = str(comment).replace('[\"',' ')
             comment = str(comment).replace('\"]',' ')
-            print("COMMENT "+str(j)+ " "+str(comment))
+            print(Fore.BLACK + Back.GREEN+"COMMENT "+str(j)+Style.RESET_ALL+" "+str(comment))
+        print("\n\n")
+    
     else:
         print("NO COMMENTS")
