@@ -8,8 +8,7 @@ subreddit = ''
 
 data = feedparser.parse('http://www.reddit.com/r/'+subreddit+'.rss')
 
-print(Fore.YELLOW+ Back.RED+data['feed']['title'])
-print(Style.RESET_ALL)
+print(Fore.BLACK+ Back.YELLOW+data['feed']['title']+Style.RESET_ALL)
 print(data['feed']['link'])
 print(data.feed.subtitle)
 print()
@@ -21,7 +20,7 @@ for i in range(0, total_entries):
     postId = re.findall('/comments/(.*?)/', link)
     comments = feedparser.parse('http://www.reddit.com/r/'+subreddit+'/comments/'+postId[0]+'/.rss')
     total_comments = len(comments['entries'])
-    print(title+ ' '+link+' '+'\n')
+    print(Fore.YELLOW+title+ Style.RESET_ALL+ ' '+link+' '+'\n')
     comment = comments['entries'][0]['content']
     comment = re.findall('<p>(.*?)</p>', str(comment[0]))
     if(len(comment)!=0):
@@ -34,8 +33,7 @@ for i in range(0, total_entries):
             comment = str(comment).replace('\']',' ')
             comment = str(comment).replace('[\"',' ')
             comment = str(comment).replace('\"]',' ')
-            print(Fore.BLACK + Back.GREEN+"COMMENT "+str(j)+Style.RESET_ALL+" "+str(comment))
+            print(Fore.GREEN +"COMMENT "+str(j)+Style.RESET_ALL+" "+str(comment))
         print("\n\n")
-    
-    else:
+    elif(total_comments==0):
         print("NO COMMENTS")
