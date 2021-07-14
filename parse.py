@@ -6,10 +6,24 @@ init()
 
 subreddits = []
 
-for subreddit in subreddits:
-    data = feedparser.parse('http://www.reddit.com/r/'+subreddit+'.rss')
+while True:
+    print("Options :")
 
-    print(Fore.BLACK+ Back.YELLOW+data['feed']['title']+Style.RESET_ALL)
+    i=1
+    
+    for subreddit in subreddits:
+        print(str(i)+" "+subreddit)
+        i+=1
+    
+    print()
+    option = input('Select a subreddit : ')
+    
+    if(option=='n'):
+        break
+    
+    data = feedparser.parse('http://www.reddit.com/r/'+subreddits[int(option)-1]+'.rss')
+    
+    print("\n"+Fore.BLACK+ Back.YELLOW+data['feed']['title']+Style.RESET_ALL)
     print(data['feed']['link'])
     print(data.feed.subtitle)
     print()
@@ -19,7 +33,7 @@ for subreddit in subreddits:
         title = data['entries'][i]['title']
         link = data['entries'][i]['link']
         postId = re.findall('/comments/(.*?)/', link)
-        comments = feedparser.parse('http://www.reddit.com/r/'+subreddit+'/comments/'+postId[0]+'/.rss')
+        comments = feedparser.parse('http://www.reddit.com/r/'+subreddits[int(option)-1]+'/comments/'+postId[0]+'/.rss')
         total_comments = len(comments['entries'])
         print(Fore.YELLOW+title+ Style.RESET_ALL+ ' '+link+' '+'\n')
         comment = comments['entries'][0]['content']
