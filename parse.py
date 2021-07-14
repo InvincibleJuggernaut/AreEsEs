@@ -7,7 +7,7 @@ init()
 subreddits = []
 
 while True:
-    print("Options :")
+    print(Fore.WHITE+Style.BRIGHT+"Options :")
 
     i=1
     
@@ -16,7 +16,7 @@ while True:
         i+=1
     
     print()
-    option = input('Select a subreddit : ')
+    option = input('Select a subreddit : '+Style.RESET_ALL)
     
     if(option=='n'):
         break
