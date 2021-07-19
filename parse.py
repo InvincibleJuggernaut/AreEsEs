@@ -1,10 +1,13 @@
-import feedparser
+import os
 import re
+import feedparser
 from colorama import init, Fore, Back, Style
 
 init()
 
 subreddits = []
+
+os.system('clear')
 
 while True:
     print(Fore.WHITE+Style.BRIGHT+"Options :")
@@ -20,6 +23,8 @@ while True:
     
     if(option=='n'):
         break
+    
+    os.system('clear')
     
     data = feedparser.parse('http://www.reddit.com/r/'+subreddits[int(option)-1]+'.rss')
     
