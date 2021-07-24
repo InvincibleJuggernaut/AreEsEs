@@ -1,5 +1,10 @@
 # AreEsEs
 
+<h2>Introduction</h2>
+
+<p> AreEsEs is a utility tool made using Python for reading Reddit RSS feeds. It is different from the well-known RSS readers because of the fact that it loads the comments along with the post contents instead of having to browse through comments in an external browser. That said, it is quite bland and primitive. It is not capable of loading images and just displays the contents in plaintext without any formatting.
+  </p>
+
 <h2>Usage</h2>
 
 <ul>
