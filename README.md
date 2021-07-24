@@ -34,3 +34,7 @@
   ```
   
   </ul>
+
+<h2>License</h2>
+
+<a href="LICENSE">GPLv3</a>
